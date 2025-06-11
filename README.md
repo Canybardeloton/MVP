@@ -1,8 +1,8 @@
-# MVP
+# MVP - Plateforme de Génération de Bilans Neuropsychologiques
 
 ## 📋 Vue d'ensemble du projet
 
-Objectif : Créer un MVP permettant aux neuropsychologues de générer automatiquement des bilans à partir de leurs notes brutes et résultats de tests.
+Objectif : Créer un MVP permettant aux neuropsychologues de générer automatiquement des bilans à partir de leurs notes brutes et cotations.
 
 ## Stack technique :
 
