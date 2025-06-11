@@ -4,6 +4,12 @@
 
 Objectif : Créer un MVP permettant aux neuropsychologues de générer automatiquement des bilans à partir de leurs notes brutes et cotations.
 
+Voici les différentes étapes de construction d'un bilan :
+1) Anamnèse (paragraphe d'introduction décrivant le contexte du patient) 
+2) En fonction de la pathologie et pour établir un diagnostic, le thérapeute peut faire passer différents tests. Ils seront différents en fonction de l'âge du patient. (enfant, adolescent, adulte, personne âgée)
+3) Le résultat de ces tests permettra au thérapeute de les comparer avec une norme établie et ainsi situer le patient sur un spectre. C'est la cotation.
+4) Le thérapeute fait des croisements de conclusions avec les tests et les observations de séance pour constituer le bilan et poser un diagnostic.
+
 ## Stack technique :
 
 - Frontend : Next.js + React + Tailwind CSS + Shadcn/ui
