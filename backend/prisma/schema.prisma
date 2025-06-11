@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+	id			String		@id @default(cuid())
+	email		String		@unique
+	password	String
+	firstName	String
+	lastName	String
+	role		String		@default("Therapist")
+	createdAt	DateTime	@default(now())
+	updatedAt	DateTime	@updatedAt
+
+	patients	Patient[]
+	bilans		Bilan[]
+
+	@@map("users")
+}
+
+model Patient{
+	id			String		@id @default(cuid())
+	firstName	String
+	lastName	String
+	birthDate	DateTime
+	category	String
+	age			number
+	createdAt	DateTime	@default(now())
+	updatedAt	DateTime	@updatedAt
+
+	therapistId	String
+	therapist	User	@relation(fields: [therapistId], reference: [id])
+	bilans		Bilan[]
+
+	@@map("patients")
+}
+
+model Bilan{
+	id			String		@id @default(cuid())
+	status		String		@default("brouillon")
+	content		Json?
+	generatedAt	DateTime?
+	createdAt	DateTime	@default(now)
+	updatedAt	DateTime	@updatedAt
+
+	patientId	String
+	patient		Patient		@relation(fields: [patientId], reference: [id])
+	therapistId	String
+	therapist	User		@relation(fields: [therapistId], reference: [id])
+
+	@@map("bilans")
+}
+
+model TestResults{
+	id			String		@id @default(cuid())
+	testType	String
+	rawScores	Json
+	scores		Json
+	createdAt	DateTime	@default(now())
+
+	bilanId		String
+	bilan		Bilan		@relation(fields: [bilanId], reference: [id])
+
+	@@map("test_results")
+}
