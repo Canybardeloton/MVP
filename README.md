@@ -5,11 +5,15 @@ Objectif : Créer un MVP permettant aux neuropsychologues de générer automatiq
 
 Stack technique :
 
-Frontend : Next.js + React + Tailwind CSS + Shadcn/ui\n
-Backend : NestJS\n
-Base de données : PostgreSQL + Prisma ORM\n
-IA : OpenAI GPT API\n
-Stockage fichiers : AWS S3 ou local\n
+Frontend : Next.js + React + Tailwind CSS + Shadcn/ui
+
+Backend : NestJS
+
+Base de données : PostgreSQL + Prisma ORM
+
+IA : OpenAI GPT API
+
+Stockage fichiers : AWS S3 ou local
 
 # Faire fonctionner le projet
 
