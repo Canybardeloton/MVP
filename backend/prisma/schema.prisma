@@ -26,6 +26,8 @@ model User {
 
 	patients	Patient[]
 	bilans		Bilan[]
+	documents   Document[]
+	templates   Template[]
 
 	@@map("users")
 }
@@ -36,12 +38,11 @@ model Patient{
 	lastName	String
 	birthDate	DateTime
 	category	String
-	age			number
 	createdAt	DateTime	@default(now())
 	updatedAt	DateTime	@updatedAt
 
 	therapistId	String
-	therapist	User	@relation(fields: [therapistId], reference: [id])
+	therapist	User	@relation(fields: [therapistId], references: [id])
 	bilans		Bilan[]
 
 	@@map("patients")
@@ -52,13 +53,13 @@ model Bilan{
 	status		String		@default("brouillon")
 	content		Json?
 	generatedAt	DateTime?
-	createdAt	DateTime	@default(now)
+	createdAt	DateTime	@default(now())
 	updatedAt	DateTime	@updatedAt
 
 	patientId	String
-	patient		Patient		@relation(fields: [patientId], reference: [id])
+	patient		Patient		@relation(fields: [patientId], references: [id])
 	therapistId	String
-	therapist	User		@relation(fields: [therapistId], reference: [id])
+	therapist	User		@relation(fields: [therapistId], references: [id])
 
 	@@map("bilans")
 }
@@ -70,8 +71,35 @@ model TestResults{
 	scores		Json
 	createdAt	DateTime	@default(now())
 
-	bilanId		String
-	bilan		Bilan		@relation(fields: [bilanId], reference: [id])
+	bilanId		String?
 
 	@@map("test_results")
+}
+
+model Document{
+	id			String		@id @default(cuid())
+	title       String
+	content     Json?
+	fileType    String
+	createdAt   DateTime	@default(now())
+	size        String
+	
+	therapistId	String
+	therapist	User		@relation(fields: [therapistId], references: [id])
+	
+	@@map("documents")
+}
+
+model Template{
+	id			String		@id @default(cuid())
+	title       String
+	content     Json?
+	createdAt   DateTime	@default(now())
+	size        String
+	updatedAt	DateTime	@updatedAt
+	
+	therapistId	String
+	therapist	User		@relation(fields: [therapistId], references: [id])	
+	
+	@@map("templates")
 }
