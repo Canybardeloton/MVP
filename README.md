@@ -1,6 +1,6 @@
 # MVP
 
-📋 Vue d'ensemble du projet
+# 📋 Vue d'ensemble du projet
 Objectif : Créer un MVP permettant aux neuropsychologues de générer automatiquement des bilans à partir de leurs notes brutes et résultats de tests.
 
 Stack technique :
@@ -11,20 +11,20 @@ Base de données : PostgreSQL + Prisma ORM
 IA : OpenAI GPT API
 Stockage fichiers : AWS S3 ou local
 
-Faire fonctionner le projet
+# Faire fonctionner le projet
 
-# 1. Démarrer les services Docker
+1. Démarrer les services Docker
 docker-compose up -d
 
-# 2. Backend - générer le client Prisma et migrer
+2. Backend - générer le client Prisma et migrer
 cd backend
 npm run db:generate
 npm run db:migrate
 
-# 3. Démarrer le backend
+3. Démarrer le backend
 npm run start:dev
 
-# 4. Dans un autre terminal - Frontend
+4. Dans un autre terminal - Frontend
 cd ../frontend
 npm run dev
 Urls de développement
